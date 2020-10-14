@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class TRIDHelper {
     public TRIDHelper() {
@@ -10,6 +11,26 @@ public class TRIDHelper {
         }
         int[] ints=asArray(id);
         return sumCheck(ints);
+    }
+    public long generateRandom(){
+        long l=0L;
+        while (!validate(l)){
+            l= newRandomLong();
+        }
+        return l;
+    }
+    private long newRandomLong(){
+        Random random=new Random();
+        int[] id=new int[11];
+        long idLong=0L;
+        for (int i=0;i<11;i++){
+            id[i]=random.nextInt(9);
+            idLong+=id[i];
+            if (i!=10)idLong*=10;
+
+        }
+        System.out.println("random:"+idLong);
+        return idLong;
     }
     private int[] asArray(long id){
         int[] ints=new int[11];
